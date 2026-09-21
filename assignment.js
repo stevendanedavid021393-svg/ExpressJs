@@ -6,11 +6,12 @@
 // can be tried out in the browser, not just via Postman/curl.
 
 const express = require('express');
+const path = require('path');
 const app = express();
 const port = 8080;
 
 app.use(express.json()); // so req.body works for POST requests
-app.use(express.static('assignment-public')); // serves the HTML/CSS/JS UI
+app.use(express.static(path.join(__dirname, 'assignment-public'))); // serves the HTML/CSS/JS UI
 
 // In-memory list of products (resets whenever the server restarts).
 let products = [
@@ -41,6 +42,13 @@ app.post('/products', (req, res) => {
   res.status(201).json({ message: 'Product added', product: newProduct });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
+// Only start a real server when this file is run directly with `node
+// assignment.js`. On Vercel, this file is imported as a serverless
+// function instead, so `app` is exported below and Vercel calls it itself.
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+  });
+}
+
+module.exports = app;
