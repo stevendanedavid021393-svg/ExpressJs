@@ -1,5 +1,11 @@
 {
   "version": 2,
-  "builds": [{ "src": "assignment-public/assignment.js", "use": "@vercel/node" }],
+  "builds": [
+    {
+      "src": "assignment-public/assignment.js",
+      "use": "@vercel/node",
+      "config": { "includeFiles": ["assignment-public/**"] }
+    }
+  ],
   "routes": [{ "src": "/(.*)", "dest": "assignment-public/assignment.js" }]
 }
