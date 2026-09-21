@@ -38,6 +38,42 @@
       <div id="list-status" class="status" role="status" aria-live="polite"></div>
       <ul id="product-list" class="product-list"></ul>
     </section>
+
+    <!-- Summary for Alex and Wesly: what was built and how it was tested. -->
+    <section class="card">
+      <h2>Assignment Summary</h2>
+
+      <p>
+        <span class="check">&check;</span>
+        <strong>GET /products</strong> &mdash; returns the product list.
+      </p>
+      <pre class="sample">[
+  { "id": 1, "name": "Keyboard", "price": 29.99 },
+  { "id": 2, "name": "Mouse", "price": 14.99 }
+]</pre>
+
+      <p>
+        <span class="check">&check;</span>
+        <strong>POST /products</strong> &mdash; accepts JSON and adds a new
+        product (plus validation if <code>name</code> or <code>price</code>
+        is missing).
+      </p>
+      <pre class="sample">Request body:
+{ "name": "Webcam", "price": 49.99 }
+
+Response:
+{
+  "message": "Product added",
+  "product": { "id": 3, "name": "Webcam", "price": 49.99 }
+}</pre>
+
+      <p>
+        Tested with Postman &mdash; also built this simple web page for a
+        quick, visual demo of both routes.
+      </p>
+    </section>
+
+    <footer class="submitted-by">Submitted by Steven David</footer>
   </main>
 
   <script src="script.js"></script>
