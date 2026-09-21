@@ -2,8 +2,9 @@
 //   GET  /products  -> list every product
 //   POST /products   -> add a new product (send JSON in the request body)
 //
-// Also serves a small visual front end (assignment-public/) so both routes
-// can be tried out in the browser, not just via Postman/curl.
+// Also serves a small visual front end (index.html/style.css/script.js,
+// right alongside this file) so both routes can be tried out in the
+// browser, not just via Postman/curl.
 
 const express = require('express');
 const path = require('path');
@@ -11,7 +12,7 @@ const app = express();
 const port = 8080;
 
 app.use(express.json()); // so req.body works for POST requests
-app.use(express.static(path.join(__dirname, 'assignment-public'))); // serves the HTML/CSS/JS UI
+app.use(express.static(__dirname)); // serves index.html, style.css, script.js
 
 // In-memory list of products (resets whenever the server restarts).
 let products = [
