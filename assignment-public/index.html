@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products API</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>Products API</h1>
+    <p class="subtitle">
+      A visual front end for the assignment's <code>GET /products</code> and
+      <code>POST /products</code> routes.
+    </p>
+
+    <!-- Form that sends a POST /products request. -->
+    <section class="card">
+      <h2>Add a Product</h2>
+      <form id="add-form">
+        <label>
+          Name
+          <input type="text" id="name" name="name" placeholder="e.g. Webcam" required />
+        </label>
+        <label>
+          Price
+          <input type="number" id="price" name="price" placeholder="e.g. 49.99" step="0.01" min="0" required />
+        </label>
+        <button type="submit">Add Product</button>
+      </form>
+      <div id="add-status" class="status" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- Live list, loaded via GET /products. -->
+    <section class="card">
+      <h2>Current Products</h2>
+      <button id="refresh-btn" type="button" class="secondary">Refresh List</button>
+      <div id="list-status" class="status" role="status" aria-live="polite"></div>
+      <ul id="product-list" class="product-list"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

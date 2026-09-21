@@ -1,12 +1,16 @@
 // Express.js Assignment: a small products API.
 //   GET  /products  -> list every product
 //   POST /products   -> add a new product (send JSON in the request body)
+//
+// Also serves a small visual front end (assignment-public/) so both routes
+// can be tried out in the browser, not just via Postman/curl.
 
 const express = require('express');
 const app = express();
 const port = 8080;
 
 app.use(express.json()); // so req.body works for POST requests
+app.use(express.static('assignment-public')); // serves the HTML/CSS/JS UI
 
 // In-memory list of products (resets whenever the server restarts).
 let products = [
